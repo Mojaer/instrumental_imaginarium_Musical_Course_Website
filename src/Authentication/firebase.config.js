@@ -2,12 +2,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD7cVNeCeQwsP5fyDxlk7TKTi-5eS6dQo4",
-    authDomain: "instrumental-imaginarium.firebaseapp.com",
-    projectId: "instrumental-imaginarium",
-    storageBucket: "instrumental-imaginarium.appspot.com",
-    messagingSenderId: "183977254162",
-    appId: "1:183977254162:web:eae84242e6975978d727cb"
+    apiKey: import.meta.env.VITE_apiKey,
+    authDomain: import.meta.env.VITE_authDomain,
+    projectId: import.meta.env.VITE_projectId,
+    storageBucket: import.meta.env.VITE_storageBucket,
+    messagingSenderId: import.meta.env.VITE_messagingSenderId,
+    appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase
