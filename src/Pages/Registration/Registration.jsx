@@ -21,9 +21,9 @@ const Registration = () => {
         }
         else {
             userRegistrations(email, password, name, url)
-                .then((user) => {
+                .then(() => {
                     profileUpdate(name, url)
-                    alert(user?.user?.displayName, 'is successfully registered')
+                    alert('you are successfully registered')
                 }).catch((error) => { alert(error.message) })
         }
 
