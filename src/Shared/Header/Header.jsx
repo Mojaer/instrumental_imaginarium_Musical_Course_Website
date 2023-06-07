@@ -14,7 +14,7 @@ const Header = () => {
             <NavLink to='/'>Home</NavLink>
             <NavLink className='md:ms-4'>Instructors</NavLink>
             <NavLink className='md:ms-4'>Classes</NavLink>
-            {user ? <NavLink className='md:ms-4'>Dashboard</NavLink> : ''}
+            {user ? <NavLink to='/dashboard' className='md:ms-4'>Dashboard</NavLink> : ''}
         </>
 
     const handleUserLogOut = () => {

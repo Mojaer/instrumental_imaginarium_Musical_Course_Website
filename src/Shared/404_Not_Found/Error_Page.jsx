@@ -7,7 +7,6 @@ const Error_Page = () => {
         <div className="mx-10 text-center mt-10">
             <Link className="btn btn-error text-bold text-white" to='/'>Back to Homepage</Link>
             <img className="mx-auto" src={error} alt="" />
-
         </div>
     );
 };
