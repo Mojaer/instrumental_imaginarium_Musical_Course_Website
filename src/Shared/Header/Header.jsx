@@ -6,7 +6,7 @@ import { authContext } from "../../Authentication/authProvider/AuthProvider";
 
 const Header = () => {
 
-    const { user, loading } = useContext(authContext)
+    const { user, loading, userLogout } = useContext(authContext)
     console.log(user)
 
     const navItems =
@@ -16,6 +16,10 @@ const Header = () => {
             <NavLink className='md:ms-4'>Classes</NavLink>
             {user ? <NavLink className='md:ms-4'>Dashboard</NavLink> : ''}
         </>
+
+    const handleUserLogOut = () => {
+        userLogout();
+    }
 
     if (loading) {
         return <div>loading...........</div>
@@ -42,7 +46,16 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end" title={user?.displayName}>
-                {user ? <img src={user?.photoURL} alt="user image" /> : <Link to='/login' className="btn">Login</Link>}
+                {user ?
+                    <>
+                        <details className="dropdown bg-transparent ">
+                            <summary className="m-1 btn"><img className="rounded-full w-12" src={user?.photoURL} alt="user-image" /> </summary>
+                            <ul className="shadow menu dropdown-content  rounded-box w-32">
+                                <li><button onClick={handleUserLogOut}>Log Out</button></li>
+                            </ul>
+                        </details>
+                    </>
+                    : <Link to='/login' className="btn">Login</Link>}
             </div>
         </div>
     );
