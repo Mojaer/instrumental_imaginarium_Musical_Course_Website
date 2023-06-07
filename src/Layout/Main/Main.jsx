@@ -5,12 +5,12 @@ import Footer from "../../Shared/Footer/Footer";
 
 const Main = () => {
     return (
-        <>
+        <div className="mx-10">
             <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
 
-        </>
+        </div>
     );
 };
 

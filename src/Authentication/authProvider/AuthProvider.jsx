@@ -3,7 +3,8 @@ import app from "../firebase.config";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 
-const authContext = createContext(null);
+// eslint-disable-next-line react-refresh/only-export-components
+export const authContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
     const auth = getAuth(app)
