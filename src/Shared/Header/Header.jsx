@@ -7,7 +7,7 @@ import { authContext } from "../../Authentication/authProvider/AuthProvider";
 const Header = () => {
 
     const { user, loading, userLogout } = useContext(authContext)
-    console.log(user)
+    // console.log(user)
 
     const navItems =
         <>
