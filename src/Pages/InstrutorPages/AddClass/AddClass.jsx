@@ -8,7 +8,7 @@ import useAxiosAction from "../../../Components/AxiosAction/useAxiosAction";
 const AddClass = () => {
 
     const { user, userLoading } = useContext(authContext);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const axiosAction = useAxiosAction()
     // console.log(user)
 
@@ -17,7 +17,7 @@ const AddClass = () => {
     }
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         const ClassName = data.clsName
         const availableSeats = data.seats
         const price = data.seats
@@ -32,13 +32,15 @@ const AddClass = () => {
             .then((data) => {
                 const ClassImage = data.data.data.display_url
                 const ClassDetail = {
-                    ClassName, availableSeats, price, InstructorName, InstructorEmail, ClassImage
+                    ClassName, availableSeats, price, InstructorName, InstructorEmail, ClassImage,
+                    classStatus: 'pending'
                 }
                 // console.log(ClassDetail)
                 axiosAction.post('/classes', ClassDetail)
                     .then((res) => {
                         if (res.data.insertedId) {
                             alert('Class is successfully inserted')
+                            reset()
                         }
                     })
 
@@ -57,7 +59,7 @@ const AddClass = () => {
                         </label>
                         <input type="text" placeholder="Class Name" className="input input-bordered w-full max-w-xs"
                             {...register("clsName", { required: true, maxLength: 20 })} />
-                        {errors.clsName && <p className="text-red-500">Number of seats must be 5-30</p>}
+                        {errors.clsName && <p className="text-red-500">Enter the name of the class</p>}
 
                     </div>
                     <div className="form-control w-full max-w-xs">
@@ -66,7 +68,7 @@ const AddClass = () => {
                         </label>
                         <input type="file" accept="image/*" className="file-input file-input-bordered w-full max-w-xs"
                             {...register("ClsImg", { required: true })} />
-                        {errors.ClsImg && <p className="text-red-500">Number of seats must be 5-30</p>}
+                        {errors.ClsImg && <p className="text-red-500">Insert an image</p>}
 
                     </div>
                 </div>
@@ -84,7 +86,7 @@ const AddClass = () => {
                         </label>
                         <input type="number" placeholder="$" className="input input-bordered w-full max-w-xs"
                             {...register("price", { required: true, maxLength: 20 })} />
-                        {errors.price && <p className="text-red-500">Number of seats must be 5-30</p>}
+                        {errors.price && <p className="text-red-500">Enter the price</p>}
 
                     </div>
                 </div>
