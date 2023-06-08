@@ -7,6 +7,7 @@ import Error_Page from "../Shared/404_Not_Found/Error_Page";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import UserManage from "../Pages/AdminPages/UserManage";
 import AdminPrivateRoute from "../Pages/AdminPages/AdminPrivateRoute/AdminPrivateRoute";
+import AddClass from "../Pages/InstrutorPages/AddClass/AddClass";
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
             {
                 path: "userManage",
                 element: <AdminPrivateRoute> <UserManage></UserManage></AdminPrivateRoute>
-            }
+            },
+            {
+                path: "addClass",
+                element: <AddClass></AddClass>
+            },
         ]
     },
     {

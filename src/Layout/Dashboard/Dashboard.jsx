@@ -30,8 +30,8 @@ const Dashboard = () => {
                                 </> :
                                 role === 'instructor' ?
                                     <>
-                                        <li><Link to=''>instructor</Link></li>
-                                        <li><Link to='/dashboard/userManage'>Manage Users</Link></li>
+                                        <li><Link to='/dashboard/addClass'>Add a class</Link></li>
+                                        <li><Link to='/dashboard/myClasses'>My Classes</Link></li>
                                     </> :
                                     <>
                                         <li><Link to=''>student</Link></li>

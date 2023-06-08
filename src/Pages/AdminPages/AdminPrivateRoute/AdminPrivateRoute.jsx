@@ -17,8 +17,6 @@ const AdminPrivateRoute = ({ children }) => {
     else {
         <Navigate to='/' replace={true}></Navigate>
     }
-
-
 };
 
 export default AdminPrivateRoute;
