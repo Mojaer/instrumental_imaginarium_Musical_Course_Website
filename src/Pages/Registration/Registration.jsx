@@ -4,11 +4,13 @@ import leftImg from '../../assets/Capture.jpg'
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import useAxiosAction from "../../Components/AxiosAction/useAxiosAction";
 
 
 const Registration = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [showPass, setShowPass] = useState(false)
+    const axiosAction = useAxiosAction()
     const { googleLogIn, userRegistrations, profileUpdate } = useContext(authContext)
 
     const onSubmit = data => {
@@ -23,7 +25,14 @@ const Registration = () => {
             userRegistrations(email, password, name, url)
                 .then(() => {
                     profileUpdate(name, url)
+
+                    //user sent to the server as student
+                    const user = { email, name, imgUrl: url, role: 'student' }
                     alert('you are successfully registered')
+                    axiosAction.post('/users', user)
+                    // .then((data) => { console.log(data) })
+
+
                 }).catch((error) => { alert(error.message) })
         }
 
@@ -31,6 +40,16 @@ const Registration = () => {
 
     const handleGoogleSignin = () => {
         googleLogIn()
+            .then((data) => {
+                const user = {
+                    email: data.user.email,
+                    name: data.user.displayName,
+                    imgUrl: data.user.photoURL,
+                    role: 'student'
+                }
+                axiosAction.post('/users', user)
+                // .then((data) => { console.log(data) })
+            })
     }
 
     const password = watch('password');

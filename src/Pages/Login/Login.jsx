@@ -5,15 +5,27 @@ import leftImg from '../../assets/Capture.jpg'
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { authContext } from "../../Authentication/authProvider/AuthProvider";
+import useAxiosAction from "../../Components/AxiosAction/useAxiosAction";
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { googleLogIn, userLogin } = useContext(authContext)
+    const axiosAction = useAxiosAction()
 
 
     const handleGoogleSignin = () => {
         googleLogIn()
+            .then((data) => {
+                const user = {
+                    email: data.user.email,
+                    name: data.user.displayName,
+                    imgUrl: data.user.photoURL,
+                    role: 'student'
+                }
+                axiosAction.post('/users', user)
+                // .then((data) => { console.log(data) })
+            })
     }
 
     const onSubmit = data => {
