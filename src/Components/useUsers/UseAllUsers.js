@@ -7,12 +7,13 @@ const UseAllUsers = () => {
 
     const AxiosAction = useAxiosAction()
 
-    const { data: allUsers = [], isLoading: allUserLoading, } = useQuery(['users'], async () => {
+    const { data: allUsers = [], isLoading: allUserLoading, refetch } = useQuery(['users'], async () => {
         const res = await AxiosAction.get('/users');
         const data = res.data
-        console.log(data)
+        // console.log(data)
+        return data;
     })
-    return [allUsers, allUserLoading]
+    return [allUsers, allUserLoading, refetch]
 
 };
 

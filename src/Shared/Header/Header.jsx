@@ -51,7 +51,7 @@ const Header = () => {
                         <details className="dropdown bg-transparent ">
                             <summary className="m-1 btn"><img className="rounded-full w-12" src={user?.photoURL} alt="user-image" /> </summary>
                             <ul className="shadow menu dropdown-content  rounded-box w-32">
-                                <li><button onClick={handleUserLogOut}>Log Out</button></li>
+                                <li><button className="btn btn-error btn-sm font-bold" onClick={handleUserLogOut}>Log Out</button></li>
                             </ul>
                         </details>
                     </>

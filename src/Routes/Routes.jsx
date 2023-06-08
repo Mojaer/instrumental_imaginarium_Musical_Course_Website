@@ -6,6 +6,7 @@ import Registration from "../Pages/Registration/Registration";
 import Error_Page from "../Shared/404_Not_Found/Error_Page";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import UserManage from "../Pages/AdminPages/UserManage";
+import AdminPrivateRoute from "../Pages/AdminPages/AdminPrivateRoute/AdminPrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "userManage",
-                element: <UserManage></UserManage>
+                element: <AdminPrivateRoute> <UserManage></UserManage></AdminPrivateRoute>
             }
         ]
     },
