@@ -6,7 +6,7 @@ import { authContext } from "../../Authentication/authProvider/AuthProvider";
 
 const Header = () => {
 
-    const { user, loading, userLogout } = useContext(authContext)
+    const { user, userLoading, userLogout } = useContext(authContext)
     // console.log(user)
 
     const navItems =
@@ -21,7 +21,7 @@ const Header = () => {
         userLogout();
     }
 
-    if (loading) {
+    if (userLoading) {
         return <div>loading...........</div>
     }
 

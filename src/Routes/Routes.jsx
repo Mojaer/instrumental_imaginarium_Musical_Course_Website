@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import Error_Page from "../Shared/404_Not_Found/Error_Page";
 import Dashboard from "../Layout/Dashboard/Dashboard";
+import UserManage from "../Pages/AdminPages/UserManage";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,12 @@ const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: "userManage",
+                element: <UserManage></UserManage>
+            }
+        ]
     },
     {
         path: "*",

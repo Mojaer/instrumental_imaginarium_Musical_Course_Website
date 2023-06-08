@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
     const auth = getAuth(app)
 
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [userLoading, setLoading] = useState(true)
 
     //registration for the website
     // eslint-disable-next-line no-unused-vars
@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
 
 
     const userInfo = {
-        user, loading,
+        user, userLoading,
         userRegistrations,
         userLogin,
         googleLogIn,

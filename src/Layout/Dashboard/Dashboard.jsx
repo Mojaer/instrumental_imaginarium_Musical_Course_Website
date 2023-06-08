@@ -1,3 +1,4 @@
+import { Link, Outlet } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 
@@ -6,18 +7,20 @@ const Dashboard = () => {
     return (
         <>
             <Header></Header>
-            <div className="drawer lg:drawer-open drawer-end justify-items-end">
+            <div className="drawer lg:drawer-open ">
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
+                    <label htmlFor="my-drawer-4" className="drawer-button btn mt-5 btn-primary visible lg:hidden">Open drawer</label>
                     {/* Page content here */}
-                    <label htmlFor="my-drawer-4" className="drawer-button mt-5 btn btn-primary">Open drawer</label>
+                    <Outlet></Outlet>
+
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-60 rounded-lg mt-4 h-3/4 bg-base-300 text-base-content">
+                    <ul className="menu p-4 w-60 rounded-lg mt-20 lg:mt-7 h-3/4 bg-base-300 text-base-content">
                         {/* Sidebar content here */}
-                        <li><a>Sidebar Item 1</a></li>
-                        <li><a>Sidebar Item 2</a></li>
+                        <li><Link to=''>Manage classes</Link></li>
+                        <li><Link to='/dashboard/userManage'>Manage Users</Link></li>
                     </ul>
                 </div>
             </div>
