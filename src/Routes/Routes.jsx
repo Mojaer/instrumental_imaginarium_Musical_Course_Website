@@ -8,6 +8,8 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import UserManage from "../Pages/AdminPages/UserManage";
 import AdminPrivateRoute from "../Pages/AdminPages/AdminPrivateRoute/AdminPrivateRoute";
 import AddClass from "../Pages/InstrutorPages/AddClass/AddClass";
+import MyClasses from "../Pages/InstrutorPages/MyClasses/MyClasses";
+import InstructorPrivateRoute from "../Pages/InstrutorPages/InstructorPrivateRoute/InstructorPrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +43,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "addClass",
-                element: <AddClass></AddClass>
+                element: <InstructorPrivateRoute><AddClass></AddClass></InstructorPrivateRoute>
+            },
+            {
+                path: "myClasses",
+                element: <InstructorPrivateRoute><MyClasses></MyClasses></InstructorPrivateRoute>
             },
         ]
     },
