@@ -1,51 +1,84 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Authentication/authProvider/AuthProvider";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAxiosAction from "../../../Components/AxiosAction/useAxiosAction";
+import { useParams } from "react-router-dom";
+import { ready } from "localforage";
 
 
-const AddClass = () => {
+const UpdateClass = () => {
 
-    const { user, userLoading } = useContext(authContext);
+    const { userLoading } = useContext(authContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const axiosAction = useAxiosAction()
-    // console.log(user)
+    const [Class, setClass] = useState(null)
 
-    if (userLoading) {
+    const id = useParams()
+    // console.log(id)
+
+    useEffect(() => {
+        axiosAction.get(`classes/${id.id}`)
+            .then(res => {
+                setClass(res.data)
+            })
+    }, [axiosAction, id.id]);
+
+    if (userLoading || !Class) {
         return <div>loading........</div>
     }
 
+
+    const { ClassImage, ClassName, availableSeats, price } = Class
+
+
+
     const onSubmit = (data) => {
         // console.log(data)
-        const ClassName = data.clsName
-        const availableSeats = data.seats
-        const price = data.price
-        const InstructorName = user.displayName
-        const InstructorEmail = user.email
-        // console.log(InstructorName, InstructorEmail)
+        const updateClassName = data.clsName
+        const updateAvailableSeats = data.seats
+        const updatePrice = data.price
         const formData = new FormData();
         formData.append('image', data.ClsImg[0]);
 
         //image upload to imageBB
         axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_API}`, formData)
             .then((data) => {
-                const ClassImage = data.data.data.display_url
-                const ClassDetail = {
-                    ClassName, availableSeats, price, InstructorName, InstructorEmail, ClassImage,
-                    classStatus: 'pending', enrolledStudents: 0, feedback: ''
+                const ClassImg = data.data.data.display_url
+                const ClassUpdate = {
+                    updateClassName, updateAvailableSeats, updatePrice, ClassImg,
                 }
-                // console.log(ClassDetail)
-                axiosAction.post('/classes', ClassDetail)
+                // console.log(ClassUpdate)
+                axiosAction.patch('/classes', ClassUpdate)
                     .then((res) => {
-                        if (res.data.insertedId) {
-                            alert('Class is successfully inserted')
-                            reset()
+                        if (res.data) {
+                            console.log(res.data);
+
+                            // alert('Class is successfully inserted')
+                            // reset()
+
+                            // TODO: backend need to be ready 
                         }
                     })
+            }).catch((err) => {
+                if (err.response.status === 400) {
+                    console.log('helo error')
+                    const ClassUpdate = {
+                        updateClassName, updateAvailableSeats, updatePrice, ClassImg: ClassImage
+                    }
+                    axiosAction.patch('/classes', ClassUpdate)
+                        .then((res) => {
+                            if (res.data) {
+                                console.log(res.data);
+
+                                // alert('Class is successfully inserted')
+                                // reset()
+                            }
+                        })
+                }
+
             });
     };
-
     return (
         <section className="ms-4">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -55,7 +88,7 @@ const AddClass = () => {
                         <label className="label">
                             <span className="label-text">Class Name</span>
                         </label>
-                        <input type="text" placeholder="Class Name" className="input input-bordered w-full max-w-xs"
+                        <input type="text" placeholder="Class Name" defaultValue={ClassName} className="input input-bordered w-full max-w-xs"
                             {...register("clsName", { required: true, maxLength: 20 })} />
                         {errors.clsName && <p className="text-red-500">Enter the name of the class</p>}
 
@@ -65,24 +98,15 @@ const AddClass = () => {
                             <span className="label-text">Class Image</span>
                         </label>
                         <input type="file" accept="image/*" className="file-input file-input-bordered w-full max-w-xs"
-                            {...register("ClsImg", { required: true })} />
-                        {errors.ClsImg && <p className="text-red-500">Insert an image</p>}
-
+                            {...register("ClsImg", { required: false })} />
                     </div>
                 </div>
                 <div className="grid grid-cols-2 items-center">
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Instructor Name</span>
-                        </label>
-                        <input type="text" disabled defaultValue={user.displayName} placeholder="Image"
-                            className="input input-bordered w-full max-w-xs" />
-                    </div>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label">
                             <span className="label-text">Price</span>
                         </label>
-                        <input type="number" placeholder="$" className="input input-bordered w-full max-w-xs"
+                        <input type="number" placeholder="$" defaultValue={price} className="input input-bordered w-full max-w-xs"
                             {...register("price", { required: true, maxLength: 20 })} />
                         {errors.price && <p className="text-red-500">Enter the price</p>}
 
@@ -90,19 +114,11 @@ const AddClass = () => {
                 </div>
                 <div className="form-control w-full max-w-xs my-2">
                     <label className="label">
-                        <span className="label-text">Instructor Email</span>
-                    </label>
-                    <input type="email" defaultValue={user.email} disabled placeholder="example@domail.com"
-                        className="input input-bordered w-full max-w-xs" />
-                </div>
-                <div className="form-control w-full max-w-xs my-2">
-                    <label className="label">
                         <span className="label-text">Available seats</span>
                     </label>
-                    <input type="numbers" placeholder="seats between 5-30" className="input input-bordered w-full max-w-xs"
+                    <input type="numbers" placeholder="seats between 5-30" defaultValue={availableSeats} className="input input-bordered w-full max-w-xs"
                         {...register("seats", { required: true, min: 5, max: 30 })} />
                     {errors.seats && <p className="text-red-500">Number of seats must be 5-30</p>}
-
                 </div>
                 <input className="btn btn-success btn-md mt-5" type="submit" value="Add Class" />
             </form>
@@ -110,4 +126,4 @@ const AddClass = () => {
     );
 };
 
-export default AddClass;
+export default UpdateClass;

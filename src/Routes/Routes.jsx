@@ -10,6 +10,7 @@ import AdminPrivateRoute from "../Pages/AdminPages/AdminPrivateRoute/AdminPrivat
 import AddClass from "../Pages/InstrutorPages/AddClass/AddClass";
 import MyClasses from "../Pages/InstrutorPages/MyClasses/MyClasses";
 import InstructorPrivateRoute from "../Pages/InstrutorPages/InstructorPrivateRoute/InstructorPrivateRoute";
+import UpdateClass from "../Pages/InstrutorPages/UpdateClass/UpdateClass";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
             {
                 path: "myClasses",
                 element: <InstructorPrivateRoute><MyClasses></MyClasses></InstructorPrivateRoute>
+            },
+            {
+                path: "updateClass/:id",
+                element: <InstructorPrivateRoute><UpdateClass></UpdateClass> </InstructorPrivateRoute>
             },
         ]
     },
