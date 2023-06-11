@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAxiosAction from "../../../Components/AxiosAction/useAxiosAction";
 import { useParams } from "react-router-dom";
-import { ready } from "localforage";
 
 
 const UpdateClass = () => {
@@ -31,8 +30,6 @@ const UpdateClass = () => {
 
     const { ClassImage, ClassName, availableSeats, price } = Class
 
-
-
     const onSubmit = (data) => {
         // console.log(data)
         const updateClassName = data.clsName
@@ -49,36 +46,32 @@ const UpdateClass = () => {
                     updateClassName, updateAvailableSeats, updatePrice, ClassImg,
                 }
                 // console.log(ClassUpdate)
-                axiosAction.patch('/classes', ClassUpdate)
+                axiosAction.patch(`/classes/${id.id}`, ClassUpdate)
                     .then((res) => {
                         if (res.data) {
                             console.log(res.data);
-
-                            // alert('Class is successfully inserted')
-                            // reset()
-
-                            // TODO: backend need to be ready 
+                            alert('Class is successfully updated')
+                            reset()
                         }
                     })
             }).catch((err) => {
                 if (err.response.status === 400) {
-                    console.log('helo error')
                     const ClassUpdate = {
                         updateClassName, updateAvailableSeats, updatePrice, ClassImg: ClassImage
                     }
-                    axiosAction.patch('/classes', ClassUpdate)
+                    axiosAction.patch(`/classes/${id.id}`, ClassUpdate)
                         .then((res) => {
                             if (res.data) {
                                 console.log(res.data);
-
-                                // alert('Class is successfully inserted')
-                                // reset()
+                                alert('Class is successfully updated')
+                                reset()
                             }
                         })
                 }
 
             });
     };
+
     return (
         <section className="ms-4">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -120,7 +113,7 @@ const UpdateClass = () => {
                         {...register("seats", { required: true, min: 5, max: 30 })} />
                     {errors.seats && <p className="text-red-500">Number of seats must be 5-30</p>}
                 </div>
-                <input className="btn btn-success btn-md mt-5" type="submit" value="Add Class" />
+                <input className="btn btn-success btn-md mt-5" type="submit" value="Update Class" />
             </form>
         </section>
     );
