@@ -13,8 +13,6 @@ const useCurrentUserRole = () => {
         return <div>loading...........</div>
     }
 
-
-
     const currentUser = allUsers.find(users => users.email === user?.email)
     if (!currentUser) {
         <Navigate to='/' replace={true}></Navigate>

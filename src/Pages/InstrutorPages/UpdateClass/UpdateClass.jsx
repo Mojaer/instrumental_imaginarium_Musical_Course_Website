@@ -9,19 +9,18 @@ import { useParams } from "react-router-dom";
 const UpdateClass = () => {
 
     const { userLoading } = useContext(authContext);
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const axiosAction = useAxiosAction()
     const [Class, setClass] = useState(null)
 
-    const id = useParams()
+    const { id } = useParams()
     // console.log(id)
-
     useEffect(() => {
-        axiosAction.get(`classes/${id.id}`)
-            .then(res => {
-                setClass(res.data)
-            })
-    }, [axiosAction, id.id]);
+        axiosAction.get(`/classes/${id}`)
+            .then(res => setClass(res.data))
+    }, [id, axiosAction])
+
+
 
     if (userLoading || !Class) {
         return <div>loading........</div>
@@ -46,12 +45,10 @@ const UpdateClass = () => {
                     updateClassName, updateAvailableSeats, updatePrice, ClassImg,
                 }
                 // console.log(ClassUpdate)
-                axiosAction.patch(`/classes/${id.id}`, ClassUpdate)
+                axiosAction.patch(`/classes/${id}`, ClassUpdate)
                     .then((res) => {
-                        if (res.data) {
-                            console.log(res.data);
+                        if (res.data.modifiedCount > 0) {
                             alert('Class is successfully updated')
-                            reset()
                         }
                     })
             }).catch((err) => {
@@ -59,16 +56,14 @@ const UpdateClass = () => {
                     const ClassUpdate = {
                         updateClassName, updateAvailableSeats, updatePrice, ClassImg: ClassImage
                     }
-                    axiosAction.patch(`/classes/${id.id}`, ClassUpdate)
+                    axiosAction.patch(`/classes/${id}`, ClassUpdate)
                         .then((res) => {
-                            if (res.data) {
-                                console.log(res.data);
+
+                            if (res.data.modifiedCount > 0) {
                                 alert('Class is successfully updated')
-                                reset()
                             }
                         })
                 }
-
             });
     };
 

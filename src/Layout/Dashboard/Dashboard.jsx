@@ -1,7 +1,8 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import useCurrentUserRole from "../../Components/CurrentUserRole/CurrentUserRole";
+import './Dashboard.css'
 
 
 const Dashboard = () => {
@@ -20,22 +21,22 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-60 rounded-lg mt-20 lg:mt-7 h-3/4 bg-base-300 text-base-content">
+                    <ul className="menu p-4 w-60 rounded-lg mt-20 lg:mt-20 h-2/4 bg-base-300 text-base-content">
                         {/* Sidebar content here */}
                         {
                             role === 'admin' ?
                                 <>
-                                    <li><Link to=''>Manage classes</Link></li>
-                                    <li><Link to='/dashboard/userManage'>Manage Users</Link></li>
+                                    <li><NavLink to='/dashboard/manageAllClasses'>Manage classes</NavLink></li>
+                                    <li><NavLink to='/dashboard/userManage'>Manage Users</NavLink></li>
                                 </> :
                                 role === 'instructor' ?
                                     <>
-                                        <li><Link to='/dashboard/addClass'>Add a class</Link></li>
-                                        <li><Link to='/dashboard/myClasses'>My Classes</Link></li>
+                                        <li><NavLink to='/dashboard/addClass'>Add a class</NavLink></li>
+                                        <li><NavLink to='/dashboard/myClasses'>My Classes</NavLink></li>
                                     </> :
                                     <>
-                                        <li><Link to=''>student</Link></li>
-                                        <li><Link to='/dashboard/userManage'>Manage Users</Link></li>
+                                        <li><NavLink to=''>student</NavLink></li>
+                                        <li><NavLink to='/dashboard/userManage'>Manage Users</NavLink></li>
                                     </>
                         }
                     </ul>
