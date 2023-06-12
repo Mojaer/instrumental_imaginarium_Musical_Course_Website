@@ -15,7 +15,7 @@ const ManageAllClasses = () => {
             })
     }, [axiosAction]);
 
-    console.log(classes)
+    // console.log(classes)
 
     return (
         <section className="ms-4 grid grid-cols-2 gap-4">
