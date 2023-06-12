@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react";
-import useAxiosAction from "../../../Components/AxiosAction/useAxiosAction";
 import ClassCard from "../../../Components/ClassCard/ClassCard";
+import useAllClasses from "../../../Components/useAllClasses/useAllClasses";
 
 
 
 const ManageAllClasses = () => {
-    const axiosAction = useAxiosAction()
-    const [classes, setClasses] = useState([])
+    // const axiosAction = useAxiosAction()
+    // const [classes, setClasses] = useState([])
 
-    useEffect(() => {
-        axiosAction.get(`/allClasses`)
-            .then(res => {
-                setClasses(res.data)
-            })
-    }, [axiosAction]);
+    const classes = useAllClasses()
 
-    // console.log(classes)
+    // useEffect(() => {
+    //     axiosAction.get(`/allClasses`)
+    //         .then(res => {
+    //             setClasses(res.data)
+    //         })
+    // }, [axiosAction]);
+
+    console.log(classes)
+
+    if (!classes) {
+        return <div>loading.....</div>
+    }
 
     return (
         <section className="ms-4 grid grid-cols-2 gap-4">

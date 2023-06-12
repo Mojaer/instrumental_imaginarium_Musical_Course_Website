@@ -12,6 +12,7 @@ import MyClasses from "../Pages/InstrutorPages/MyClasses/MyClasses";
 import InstructorPrivateRoute from "../Pages/InstrutorPages/InstructorPrivateRoute/InstructorPrivateRoute";
 import UpdateClass from "../Pages/InstrutorPages/UpdateClass/UpdateClass";
 import ManageAllClasses from "../Pages/AdminPages/manageAllClasses/manageAllClasses";
+import Instructors from "../Pages/Instructors/Instructors";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
+
+            },
+            {
+                path: "/instructors",
+                element: <Instructors></Instructors>,
 
             },
             {

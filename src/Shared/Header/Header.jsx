@@ -12,7 +12,7 @@ const Header = () => {
     const navItems =
         <>
             <NavLink to='/'>Home</NavLink>
-            <NavLink className='md:ms-4'>Instructors</NavLink>
+            <NavLink className='md:ms-4' to='/instructors'>Instructors</NavLink>
             <NavLink className='md:ms-4'>Classes</NavLink>
             {user ? <NavLink to='/dashboard' className='md:ms-4'>Dashboard</NavLink> : ''}
         </>
