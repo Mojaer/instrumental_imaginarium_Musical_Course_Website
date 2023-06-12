@@ -16,14 +16,14 @@ const ManageAllClasses = () => {
     //         })
     // }, [axiosAction]);
 
-    console.log(classes)
+    // console.log(classes)
 
     if (!classes) {
         return <div>loading.....</div>
     }
 
     return (
-        <section className="ms-4 grid grid-cols-2 gap-4">
+        <section className="ms-4 grid grid-cols-2 gap-6">
             {classes.map(eachClass => <ClassCard key={eachClass._id} eachClass={eachClass} ></ClassCard>)}
         </section>
 

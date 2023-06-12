@@ -13,6 +13,7 @@ import InstructorPrivateRoute from "../Pages/InstrutorPages/InstructorPrivateRou
 import UpdateClass from "../Pages/InstrutorPages/UpdateClass/UpdateClass";
 import ManageAllClasses from "../Pages/AdminPages/manageAllClasses/manageAllClasses";
 import Instructors from "../Pages/Instructors/Instructors";
+import AllApprovedClasses from "../Pages/AllApprovedClasses/AllApprovedClasses";
 
 const router = createBrowserRouter([
     {
@@ -25,17 +26,22 @@ const router = createBrowserRouter([
 
             },
             {
-                path: "/instructors",
+                path: "instructors",
                 element: <Instructors></Instructors>,
 
             },
             {
-                path: "/login",
+                path: "approvedClasses",
+                element: <AllApprovedClasses></AllApprovedClasses>,
+
+            },
+            {
+                path: "login",
                 element: <Login></Login>,
 
             },
             {
-                path: "/register",
+                path: "register",
                 element: <Registration></Registration>,
 
             },

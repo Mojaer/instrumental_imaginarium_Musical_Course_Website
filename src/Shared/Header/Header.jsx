@@ -13,7 +13,7 @@ const Header = () => {
         <>
             <NavLink to='/'>Home</NavLink>
             <NavLink className='md:ms-4' to='/instructors'>Instructors</NavLink>
-            <NavLink className='md:ms-4'>Classes</NavLink>
+            <NavLink className='md:ms-4' to='/approvedClasses'>Classes</NavLink>
             {user ? <NavLink to='/dashboard' className='md:ms-4'>Dashboard</NavLink> : ''}
         </>
 
@@ -22,7 +22,7 @@ const Header = () => {
     }
 
     if (userLoading) {
-        return <div>loading...........</div>
+        return <div className="h-14 w-14 text-center"><img src="../../assets/loading.gif" alt="" /></div>
     }
 
     return (
@@ -48,12 +48,8 @@ const Header = () => {
             <div className="navbar-end" title={user?.displayName}>
                 {user ?
                     <>
-                        <details className="dropdown bg-transparent ">
-                            <summary className="m-1 btn"><img className="rounded-full w-12" referrerPolicy="no-referrer" src={user?.photoURL} alt="user-image" /> </summary>
-                            <ul className="shadow menu dropdown-content  rounded-box w-32">
-                                <li><button className="btn btn-error btn-sm font-bold" onClick={handleUserLogOut}>Log Out</button></li>
-                            </ul>
-                        </details>
+                        <button className="btn btn-error btn-sm font-bold " onClick={handleUserLogOut}>Log Out</button>
+                        <summary className=""><img className="rounded-full w-12 h-12 ms-3" referrerPolicy="no-referrer" src={user?.photoURL} alt="user-image" /> </summary>
                     </>
                     : <Link to='/login' className="btn">Login</Link>}
             </div>
