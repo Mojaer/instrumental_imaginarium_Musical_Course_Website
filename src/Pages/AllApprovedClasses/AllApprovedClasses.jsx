@@ -7,13 +7,13 @@ const AllApprovedClasses = () => {
     const approvedClasses = classes.filter(Class => Class.classStatus === 'approved')
     // console.log(approvedClasses)
     return (
-        <div className="grid grid-cols-3 gap-8 my-10">
+        <section className="grid grid-cols-3 gap-8 my-10">
             {
                 approvedClasses.map(Class => <ApprovedClassCard key={Class._id}
                     Class={Class}
                 ></ApprovedClassCard>)
             }
-        </div>
+        </section>
     )
 };
 

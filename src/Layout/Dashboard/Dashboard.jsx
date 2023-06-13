@@ -35,8 +35,8 @@ const Dashboard = () => {
                                         <li><NavLink to='/dashboard/myClasses'>My Classes</NavLink></li>
                                     </> :
                                     <>
-                                        <li><NavLink to=''>student</NavLink></li>
-                                        <li><NavLink to='/dashboard/userManage'>Manage Users</NavLink></li>
+                                        <li><NavLink to='/dashboard/selectedClass'>My Selected Classes</NavLink></li>
+                                        <li><NavLink to='/dashboard/enrolledClass'>My Enrolled Classes</NavLink></li>
                                     </>
                         }
                     </ul>

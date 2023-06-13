@@ -14,6 +14,9 @@ import UpdateClass from "../Pages/InstrutorPages/UpdateClass/UpdateClass";
 import ManageAllClasses from "../Pages/AdminPages/manageAllClasses/manageAllClasses";
 import Instructors from "../Pages/Instructors/Instructors";
 import AllApprovedClasses from "../Pages/AllApprovedClasses/AllApprovedClasses";
+import SelectedClasses from "../Pages/StudentsPages/selectedClasses/SelectedClasses";
+import EnrolledClasses from "../Pages/StudentsPages/EnrolledClasses/EnrolledClasses";
+import StudentPrivateRoute from "../Pages/StudentsPages/StudentsPrivateRoute/StudentPrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -70,6 +73,14 @@ const router = createBrowserRouter([
             {
                 path: "updateClass/:id",
                 element: <InstructorPrivateRoute><UpdateClass></UpdateClass> </InstructorPrivateRoute>
+            },
+            {
+                path: "selectedClass",
+                element: <StudentPrivateRoute><SelectedClasses></SelectedClasses></StudentPrivateRoute>
+            },
+            {
+                path: "enrolledClass",
+                element: <StudentPrivateRoute><EnrolledClasses></EnrolledClasses></StudentPrivateRoute>
             },
         ]
     },

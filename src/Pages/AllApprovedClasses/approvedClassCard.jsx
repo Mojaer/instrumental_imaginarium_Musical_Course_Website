@@ -15,7 +15,7 @@ const ApprovedClassCard = ({ Class }) => {
 
     const handleSelect = () => {
         axiosAction.post(`/selectedClass`, {
-            ClassName, id: _id, InstructorName, ClassImage, price, studentEmail: user.email
+            ClassName, id: _id, InstructorName, ClassImage, price, availableSeats, studentEmail: user.email
         })
             .then(res => {
                 if (res.data.insertedId) {
@@ -36,7 +36,7 @@ const ApprovedClassCard = ({ Class }) => {
                     {ClassName}
                 </h2>
                 <p> <strong>Instructor:</strong> {InstructorName}</p>
-                <p> <strong>Available seats:</strong> {availableSeats}$</p>
+                <p> <strong>Available seats:</strong> {availableSeats}</p>
                 <p> <strong>Price:</strong> {price}$</p>
 
 
