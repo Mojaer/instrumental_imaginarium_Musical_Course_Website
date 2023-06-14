@@ -64,19 +64,16 @@ const Registration = () => {
     const validatePassword = (value) => {
         let hasError = false;
 
-        // Condition: Password is less than 6 characters
         if (value.length < 6) {
             hasError = true;
             return 'Password must be at least 6 characters long';
         }
-
-        // Condition: Password does not have a capital letter
         if (!/[A-Z]/.test(value)) {
             hasError = true;
             return 'Password must contain at least one capital letter';
         }
 
-        // Condition: Password does not have a special character
+
         if (!/[!@#$%^&*]/.test(value)) {
             hasError = true;
             return 'Password must contain at least one special character (!@#$%^&*)';
