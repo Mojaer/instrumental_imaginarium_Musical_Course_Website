@@ -73,7 +73,7 @@ const Login = () => {
                                     {errors.password && <span className="block text-red-500">Enter email</span>}
                                     <label
 
-                                        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary peer-focus:font-semibold -translate-y-[1.15rem] scale-[0.8]"
+                                        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary peer-focus:font-semibold -translate-y-[1.60rem] scale-[0.8]"
                                     >Email address
                                     </label>
                                 </div>
@@ -95,7 +95,7 @@ const Login = () => {
                                         {showPass ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
                                     </button>
                                     <label
-                                        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.15rem]  peer-focus:font-semibold scale-[0.8]"
+                                        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.60rem]  peer-focus:font-semibold scale-[0.8]"
                                     >Password
                                     </label>
                                 </div>
