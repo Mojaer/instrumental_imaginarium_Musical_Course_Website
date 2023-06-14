@@ -2,6 +2,7 @@ import { useContext } from "react";
 import useCurrentUserRole from "../../Components/CurrentUserRole/CurrentUserRole";
 import { authContext } from "../../Authentication/authProvider/AuthProvider";
 import useAxiosAction from "../../Components/AxiosAction/useAxiosAction";
+import { Link } from "react-router-dom";
 
 
 const ApprovedClassCard = ({ Class }) => {
@@ -43,12 +44,14 @@ const ApprovedClassCard = ({ Class }) => {
 
                 <div className="card-actions justify-end">
                     <div className="badge  ">
-                        <button className="btn btn-sm btn-success"
-                            onClick={handleSelect}
-                            disabled={role === 'admin' ? true :
-                                role === 'instructor' ? true :
-                                    availableSeats <= 0 ? true : false} >
-                            Select Course</button>
+                        {
+                            user ? <button className="btn btn-sm btn-success"
+                                onClick={handleSelect}
+                                disabled={role === 'admin' ? true :
+                                    role === 'instructor' ? true :
+                                        availableSeats <= 0 ? true : false} >
+                                Select Course</button> : <Link to='/login'> Login before select the course </Link>
+                        }
                     </div>
 
                 </div>

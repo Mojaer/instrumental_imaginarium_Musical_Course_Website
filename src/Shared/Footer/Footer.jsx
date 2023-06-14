@@ -1,9 +1,13 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import logo from '../../assets/instrumental-imaginarium.jpg'
+import { useContext } from 'react';
+import { themeContext } from '../../Authentication/darkThemeProvider/ThemeProvider';
+import './Footer.css'
 
 const Footer = () => {
+    const { theme } = useContext(themeContext)
     return (
-        <footer className="bg-gray-100 py-4 rounded-md p-6">
+        <footer className={`bg-gray-100 py-4 rounded-md p-6 ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
             <div className="container mx-auto flex items-center justify-between">
                 <div className="ms-4 text-center">
                     <img src={logo} alt="Company Logo" className="w-24 h-8 mx-auto" />

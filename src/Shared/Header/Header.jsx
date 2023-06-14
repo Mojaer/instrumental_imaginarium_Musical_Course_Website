@@ -3,6 +3,9 @@ import navImg from '../../assets/instrumental-imaginarium.jpg'
 import { useContext } from "react";
 import { authContext } from "../../Authentication/authProvider/AuthProvider";
 import useCurrentUserRole from "../../Components/CurrentUserRole/CurrentUserRole";
+import { themeContext } from "../../Authentication/darkThemeProvider/ThemeProvider";
+import { BsFillMoonFill } from "react-icons/bs";
+import './Header.css'
 
 
 
@@ -25,12 +28,18 @@ const Header = () => {
         userLogout();
     }
 
+    //handle theme
+    const { theme, toggleTheme } = useContext(themeContext)
+    const handleTheme = () => {
+        toggleTheme();
+    };
+
     if (userLoading) {
         return <div className="h-14 w-14 text-center"><img src="../../assets/loading.gif" alt="" /></div>
     }
 
     return (
-        <div className="navbar bg-base-100 sticky top-0 z-30">
+        <div className={`navbar bg-base-100 sticky top-0 z-30 ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -50,6 +59,10 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end" title={user?.displayName}>
+                <div >
+                    <button className="mr-3" onClick={handleTheme}><BsFillMoonFill></BsFillMoonFill></button>
+                </div>
+
                 {user ?
                     <>
                         <button className="btn btn-error btn-sm font-bold " onClick={handleUserLogOut}>Log Out</button>

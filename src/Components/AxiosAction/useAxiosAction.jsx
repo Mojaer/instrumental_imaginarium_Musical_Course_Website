@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const axiosAction = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://instrumental-imaginarium-server.vercel.app',
+    // baseURL: 'http://localhost:3000',
 })
 
 const useAxiosAction = () => {
