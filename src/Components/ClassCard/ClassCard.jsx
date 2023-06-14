@@ -16,7 +16,13 @@ const ClassCard = ({ eachClass }) => {
         axiosAction.patch(`/classStatus/${_id}`, { status: status })
             .then(() => {
                 // console.log(res.data)
-                alert('status updated')
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your status has been updated',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 setStatus(status);
 
             })

@@ -38,7 +38,7 @@ const Dashboard = () => {
                                     <>
                                         <li><NavLink to='/dashboard/selectedClass'><FaSearchPlus></FaSearchPlus> My Selected Classes</NavLink></li>
                                         <li><NavLink to='/dashboard/enrolledClass'><FaSignInAlt></FaSignInAlt> My Enrolled Classes</NavLink></li>
-                                        <li><NavLink to='/dashboard/paymentHistory'><FaStripe></FaStripe> Payment History</NavLink></li>
+                                        <li><NavLink to='/dashboard/paymentHistory'><FaStripe className="text-2xl"></FaStripe> Payment History</NavLink></li>
                                     </>
                         }
                     </ul>

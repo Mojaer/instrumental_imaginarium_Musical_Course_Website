@@ -3,6 +3,7 @@ import useCurrentUserRole from "../../Components/CurrentUserRole/CurrentUserRole
 import { authContext } from "../../Authentication/authProvider/AuthProvider";
 import useAxiosAction from "../../Components/AxiosAction/useAxiosAction";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const ApprovedClassCard = ({ Class }) => {
@@ -21,9 +22,21 @@ const ApprovedClassCard = ({ Class }) => {
         })
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('class is selected')
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Class is selected',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 } else {
-                    alert(res.data.message)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${res.data.message}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
 
             })

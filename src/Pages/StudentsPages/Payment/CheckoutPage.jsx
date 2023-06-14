@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAxiosAction from "../../../Components/AxiosAction/useAxiosAction";
 import AuthProvider, { authContext } from "../../../Authentication/authProvider/AuthProvider";
 import './checkout.css'
+import Swal from "sweetalert2";
 
 const CheckoutPage = ({ price, currentClass }) => {
     // console.log(price);
@@ -78,7 +79,12 @@ const CheckoutPage = ({ price, currentClass }) => {
             axiosAction.post('/payment', currentClass)
                 .then(res => {
                     if (res.data.insertedId) {
-                        alert('payment complete');
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'payment complete',
+                            showConfirmButton: false,
+                        })
                     }
                 })
 

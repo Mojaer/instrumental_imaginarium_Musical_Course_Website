@@ -3,6 +3,7 @@ import { authContext } from "../../../Authentication/authProvider/AuthProvider";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAxiosAction from "../../../Components/AxiosAction/useAxiosAction";
+import Swal from "sweetalert2";
 
 
 const AddClass = () => {
@@ -39,7 +40,13 @@ const AddClass = () => {
                 axiosAction.post('/classes', ClassDetail)
                     .then((res) => {
                         if (res.data.insertedId) {
-                            alert('Class is successfully inserted')
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Class is successfully inserted',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                             reset()
                         }
                     })

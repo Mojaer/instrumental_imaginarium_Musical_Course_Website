@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAxiosAction from "../../Components/AxiosAction/useAxiosAction";
 import { FaEye, FaEyeSlash } from "react-icons/fa"
+import Swal from "sweetalert2";
 
 
 const Registration = () => {
@@ -21,7 +22,11 @@ const Registration = () => {
         const password = data.password
         const url = data.url
         if (password !== repeatPassword) {
-            alert('password mismatch')
+            Swal.fire({
+                icon: 'error',
+                text: 'password mismatch',
+
+            })
         }
         else {
             userRegistrations(email, password, name, url)

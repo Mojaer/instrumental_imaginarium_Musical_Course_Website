@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import useAxiosAction from "../../../Components/AxiosAction/useAxiosAction";
 
 
@@ -11,7 +12,13 @@ const UserTable = ({ user, refetch }) => {
             .then((data) => {
                 if (data.data.modifiedCount > 0) {
                     refetch();
-                    alert(`user is updated successfully ${role}`)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'user is updated successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             })
     }
