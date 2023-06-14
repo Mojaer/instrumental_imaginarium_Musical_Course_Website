@@ -23,7 +23,7 @@ const ManageAllClasses = () => {
     }
 
     return (
-        <section className="ms-4 grid grid-cols-2 gap-6">
+        <section className="ms-4 grid md:grid-cols-2 gap-8">
             {classes.map(eachClass => <ClassCard key={eachClass._id} eachClass={eachClass} ></ClassCard>)}
         </section>
 

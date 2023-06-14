@@ -5,7 +5,8 @@ import useAxiosAction from "../../Components/AxiosAction/useAxiosAction";
 
 
 const ApprovedClassCard = ({ Class }) => {
-    const { ClassImage, ClassName, InstructorName, availableSeats, price, _id } = Class
+    const { ClassImage, ClassName, InstructorEmail, InstructorName, availableSeats, price, _id } = Class
+    // console.log(Class)
     const role = useCurrentUserRole()
     const { user, userLoading } = useContext(authContext)
     const axiosAction = useAxiosAction()
@@ -15,7 +16,7 @@ const ApprovedClassCard = ({ Class }) => {
 
     const handleSelect = () => {
         axiosAction.post(`/selectedClass`, {
-            ClassName, id: _id, InstructorName, ClassImage, price, availableSeats, studentEmail: user.email
+            ClassName, id: _id, InstructorEmail, InstructorName, ClassImage, price, availableSeats, studentEmail: user.email
         })
             .then(res => {
                 if (res.data.insertedId) {
@@ -29,8 +30,8 @@ const ApprovedClassCard = ({ Class }) => {
 
     // console.log(user, _id)
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><img src={ClassImage} alt="Shoes" /></figure>
+        <div className={`card w-80  bg-base-100 ${availableSeats <= 0 ? 'bg-red-500' : 'bg-base-100'}  shadow-xl`}>
+            <figure><img className="h-24" src={ClassImage} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
                     {ClassName}

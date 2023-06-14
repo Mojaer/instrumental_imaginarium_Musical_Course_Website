@@ -17,6 +17,9 @@ import AllApprovedClasses from "../Pages/AllApprovedClasses/AllApprovedClasses";
 import SelectedClasses from "../Pages/StudentsPages/selectedClasses/SelectedClasses";
 import EnrolledClasses from "../Pages/StudentsPages/EnrolledClasses/EnrolledClasses";
 import StudentPrivateRoute from "../Pages/StudentsPages/StudentsPrivateRoute/StudentPrivateRoute";
+import Payment from "../Pages/StudentsPages/Payment/Payment";
+import PaymentHistory from "../Pages/StudentsPages/PaymentHistory/PaymentHistory";
+import UserPrivateRoute from "../Authentication/userPrivateRoute/UserPrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -48,11 +51,12 @@ const router = createBrowserRouter([
                 element: <Registration></Registration>,
 
             },
+
         ],
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <UserPrivateRoute><Dashboard></Dashboard></UserPrivateRoute>,
         children: [
             {
                 path: "userManage",
@@ -81,6 +85,15 @@ const router = createBrowserRouter([
             {
                 path: "enrolledClass",
                 element: <StudentPrivateRoute><EnrolledClasses></EnrolledClasses></StudentPrivateRoute>
+            },
+            {
+                path: "payment/:id",
+                element: <StudentPrivateRoute><Payment></Payment></StudentPrivateRoute>
+            },
+            {
+                path: "paymentHistory",
+                element: <StudentPrivateRoute><PaymentHistory></PaymentHistory> </StudentPrivateRoute>,
+
             },
         ]
     },

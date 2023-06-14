@@ -2,11 +2,14 @@ import { Link, NavLink } from "react-router-dom";
 import navImg from '../../assets/instrumental-imaginarium.jpg'
 import { useContext } from "react";
 import { authContext } from "../../Authentication/authProvider/AuthProvider";
+import useCurrentUserRole from "../../Components/CurrentUserRole/CurrentUserRole";
+
 
 
 const Header = () => {
 
     const { user, userLoading, userLogout } = useContext(authContext)
+    const role = useCurrentUserRole()
     // console.log(user)
 
     const navItems =
@@ -14,7 +17,8 @@ const Header = () => {
             <NavLink to='/'>Home</NavLink>
             <NavLink className='md:ms-4' to='/instructors'>Instructors</NavLink>
             <NavLink className='md:ms-4' to='/approvedClasses'>Classes</NavLink>
-            {user ? <NavLink to='/dashboard' className='md:ms-4'>Dashboard</NavLink> : ''}
+            {user ? <NavLink to={role === 'admin' ? '/dashboard/userManage' : role === 'instructor' ? '/dashboard/addClass' : '/dashboard/selectedClass'}
+                className='md:ms-4'>Dashboard</NavLink> : ''}
         </>
 
     const handleUserLogOut = () => {
@@ -26,7 +30,7 @@ const Header = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 sticky top-0 z-20">
+        <div className="navbar bg-base-100 sticky top-0 z-30">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

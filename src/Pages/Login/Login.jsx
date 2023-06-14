@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import leftImg from '../../assets/Capture.jpg'
@@ -12,6 +12,7 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { googleLogIn, userLogin } = useContext(authContext)
     const axiosAction = useAxiosAction()
+    const navigate = useNavigate()
 
 
     const handleGoogleSignin = () => {
@@ -25,6 +26,7 @@ const Login = () => {
                 }
                 axiosAction.post('/users', user)
                 // .then((data) => { console.log(data) })
+                navigate('/')
             })
     }
 
@@ -33,7 +35,9 @@ const Login = () => {
         const password = data.password
         // console.log(email, password)
         userLogin(email, password)
+            .then(() => { navigate('/') })
             .catch(err => alert(err.message))
+
 
 
     };
@@ -41,7 +45,9 @@ const Login = () => {
     return (
         <>
             <section>
+
                 <div className="container h-full px-6 py-20">
+                    <h1 className="text-3xl font-semibold my-3 uppercase text-center">Please Login</h1>
                     <div
                         className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
                         {/*  Left column container  */}
@@ -85,8 +91,8 @@ const Login = () => {
                                         event.preventDefault();
                                         setShowPass(!showPass)
                                     }}
-                                        className="bg-transparent border-none absolute -mt-8 text-lg right-4">
-                                        {showPass ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                                        className="bg-gray-400 border-none absolute -mt-14 text-lg right-4">
+                                        {showPass ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
                                     </button>
                                     <label
                                         className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.15rem]  peer-focus:font-semibold scale-[0.8]"

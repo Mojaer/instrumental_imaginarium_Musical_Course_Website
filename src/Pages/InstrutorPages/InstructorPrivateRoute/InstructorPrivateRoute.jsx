@@ -12,7 +12,7 @@ const InstructorPrivateRoute = ({ children }) => {
         );
     }
     else {
-        <Navigate to='/' replace={true}></Navigate>
+        <Navigate to='/login' replace={true}></Navigate>
     }
 };
 

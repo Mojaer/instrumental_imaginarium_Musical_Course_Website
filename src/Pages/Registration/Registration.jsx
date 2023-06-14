@@ -2,15 +2,17 @@ import { useContext, useState } from "react";
 import { authContext } from "../../Authentication/authProvider/AuthProvider";
 import leftImg from '../../assets/Capture.jpg'
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAxiosAction from "../../Components/AxiosAction/useAxiosAction";
+import { FaEye, FaEyeSlash } from "react-icons/fa"
 
 
 const Registration = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [showPass, setShowPass] = useState(false)
     const axiosAction = useAxiosAction()
+    const navigate = useNavigate()
     const { googleLogIn, userRegistrations, profileUpdate } = useContext(authContext)
 
     const onSubmit = data => {
@@ -29,6 +31,7 @@ const Registration = () => {
                     //user sent to the server as student
                     const user = { email, name, imgUrl: url, role: 'student' }
                     alert('you are successfully registered')
+                    navigate('/')
                     axiosAction.post('/users', user)
                     // .then((data) => { console.log(data) })
 
@@ -48,9 +51,34 @@ const Registration = () => {
                     role: 'student'
                 }
                 axiosAction.post('/users', user)
+                navigate('/')
                 // .then((data) => { console.log(data) })
             })
     }
+
+    const validatePassword = (value) => {
+        let hasError = false;
+
+        // Condition: Password is less than 6 characters
+        if (value.length < 6) {
+            hasError = true;
+            return 'Password must be at least 6 characters long';
+        }
+
+        // Condition: Password does not have a capital letter
+        if (!/[A-Z]/.test(value)) {
+            hasError = true;
+            return 'Password must contain at least one capital letter';
+        }
+
+        // Condition: Password does not have a special character
+        if (!/[!@#$%^&*]/.test(value)) {
+            hasError = true;
+            return 'Password must contain at least one special character (!@#$%^&*)';
+        }
+
+        return !hasError;
+    };
 
     const password = watch('password');
     const repeatPassword = watch('repeatPassword');
@@ -58,6 +86,7 @@ const Registration = () => {
     return (
         <section>
             <div className="container h-full px-6 py-20">
+                <h1 className="text-3xl font-semibold my-3 uppercase text-center">Please Register</h1>
                 <div
                     className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
                     {/*  Left column container  */}
@@ -83,7 +112,7 @@ const Registration = () => {
                                 {errors.name && <span className="block text-red-500">Enter your name</span>}
                                 <label
 
-                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary peer-focus:font-semibold -translate-y-[1.15rem] scale-[0.8]"
+                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary peer-focus:font-semibold -translate-y-[1.60rem] scale-[0.8]"
                                 >Name
                                 </label>
                             </div>
@@ -100,7 +129,7 @@ const Registration = () => {
                                 {errors.email && <span className="block text-red-500">Enter Email</span>}
                                 <label
 
-                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary peer-focus:font-semibold -translate-y-[1.15rem] scale-[0.8]"
+                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary peer-focus:font-semibold -translate-y-[1.60rem] scale-[0.8]"
                                 >Email address
                                 </label>
                             </div>
@@ -111,18 +140,19 @@ const Registration = () => {
                                     type={showPass ? 'text' : 'password'}
                                     className="peer relative block min-h-[auto] w-full rounded border-0 bg-gray-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                                     placeholder="Password"
-                                    {...register("password", { required: true, })} />
-                                {errors.password && <span className="block text-red-500">Enter password</span>}
+                                    {...register('password', { validate: validatePassword })} />
+                                {errors.password && <p className="text-red-600">{errors.password.message}</p>}
+
 
                                 <button onClick={(event) => {
                                     event.preventDefault();
                                     setShowPass(!showPass)
                                 }}
-                                    className="btn btn-xs">
-                                    {showPass ? 'Hide password' : 'Show password'}
+                                    className="bg-gray-400 border-none absolute -mt-14 text-lg right-4">
+                                    {showPass ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
                                 </button>
                                 <label
-                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.15rem]  peer-focus:font-semibold scale-[0.8]"
+                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.60rem]  peer-focus:font-semibold scale-[0.8]"
                                 >Password
                                 </label>
                             </div>
@@ -141,7 +171,7 @@ const Registration = () => {
                                     <p className="block text-red-500">Passwords do not match</p>)}
 
                                 <label
-                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.15rem]  peer-focus:font-semibold scale-[0.8]"
+                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.60rem]  peer-focus:font-semibold scale-[0.8]"
                                 >Password
                                 </label>
                             </div>
@@ -157,7 +187,7 @@ const Registration = () => {
                                 {errors.url && <span className="block text-red-500">Enter Photo Url</span>}
 
                                 <label
-                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.15rem]  peer-focus:font-semibold scale-[0.8]"
+                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500   peer-focus:scale-[0.8] peer-focus:text-primary -translate-y-[1.60rem]  peer-focus:font-semibold scale-[0.8]"
                                 >Photo Url
                                 </label>
                             </div>
@@ -172,9 +202,9 @@ const Registration = () => {
                             <br />
                             <div className="mb-4 mt-2 ">
                                 {/* <!-- register if dont have account --> */}
-                                Do not have an account?
-                                <Link to='/register' className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-                                > Register</Link>
+                                Already have an account?
+                                <Link to='/login' className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                                > login</Link>
                             </div>
                         </form>
 

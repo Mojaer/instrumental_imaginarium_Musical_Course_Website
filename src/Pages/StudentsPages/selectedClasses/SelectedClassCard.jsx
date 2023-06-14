@@ -1,11 +1,12 @@
 import Swal from "sweetalert2";
 import useAxiosAction from "../../../Components/AxiosAction/useAxiosAction";
+import { Link } from "react-router-dom";
 
 
 
 const SelectedClassCard = ({ Class, setClasses, updatedClasses }) => {
     const axiosAction = useAxiosAction()
-    const { ClassImage, ClassName, InstructorName, price, availableSeats, studentEmail, _id } = Class
+    const { ClassImage, ClassName, InstructorName, price, availableSeats, _id, id } = Class
 
     // console.log(Class)
     const handleDelete = () => {
@@ -30,9 +31,6 @@ const SelectedClassCard = ({ Class, setClasses, updatedClasses }) => {
                         )
                         const newClasses = updatedClasses.filter(uClass => uClass._id !== _id);
                         setClasses(newClasses)
-
-
-
                     }))
 
             }
@@ -54,7 +52,7 @@ const SelectedClassCard = ({ Class, setClasses, updatedClasses }) => {
                 <div className="card-actions justify-end">
                     <div className="badge  ">
                         <button className="btn btn-sm btn-success" onClick={handleDelete}> Delete</button>
-                        <button className="btn btn-sm btn-success ms-4"> Make Payment</button>
+                        <Link className="btn btn-sm btn-success ms-4" to={`/dashboard/payment/${id}`}> Make Payment</Link>
                     </div>
 
                 </div>

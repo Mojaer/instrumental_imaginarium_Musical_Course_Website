@@ -33,7 +33,7 @@ const AddClass = () => {
                 const ClassImage = data.data.data.display_url
                 const ClassDetail = {
                     ClassName, availableSeats, price, InstructorName, InstructorEmail, ClassImage,
-                    classStatus: 'pending', enrolledStudents: 0, feedback: ''
+                    classStatus: 'pending', feedback: '', seatBooked: 0
                 }
                 // console.log(ClassDetail)
                 axiosAction.post('/classes', ClassDetail)
@@ -56,7 +56,7 @@ const AddClass = () => {
                             <span className="label-text">Class Name</span>
                         </label>
                         <input type="text" placeholder="Class Name" className="input input-bordered w-full max-w-xs"
-                            {...register("clsName", { required: true, maxLength: 20 })} />
+                            {...register("clsName", { required: true, maxLength: 100 })} />
                         {errors.clsName && <p className="text-red-500">Enter the name of the class</p>}
 
                     </div>
@@ -99,8 +99,8 @@ const AddClass = () => {
                     <label className="label">
                         <span className="label-text">Available seats</span>
                     </label>
-                    <input type="numbers" placeholder="seats between 5-30" className="input input-bordered w-full max-w-xs"
-                        {...register("seats", { required: true, min: 5, max: 30 })} />
+                    <input type="numbers" placeholder="seats between 1-30" className="input input-bordered w-full max-w-xs"
+                        {...register("seats", { required: true, min: 1, max: 30 })} />
                     {errors.seats && <p className="text-red-500">Number of seats must be 5-30</p>}
 
                 </div>

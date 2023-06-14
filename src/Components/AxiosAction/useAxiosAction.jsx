@@ -9,6 +9,7 @@ const useAxiosAction = () => {
 
     useEffect(() => {
         axiosAction.interceptors.request.use((config) => {
+            // config.headers.Authorization = `Bearer ${'none'}`;
             return config
         })
     }, [])
