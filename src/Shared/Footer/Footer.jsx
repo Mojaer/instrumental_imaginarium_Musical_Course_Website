@@ -7,7 +7,7 @@ import './Footer.css'
 const Footer = () => {
     const { theme } = useContext(themeContext)
     return (
-        <footer className={`bg-gray-100 py-4 rounded-md p-6 ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
+        <footer className={`bg-gray-100 py-10 rounded-md p-6 ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
             <div className="container mx-auto md:flex items-center justify-between">
                 <div className="ms-4 text-center">
                     <img src={logo} alt="Company Logo" className="w-24 h-8 mx-auto" />
