@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import useCurrentUserRole from "../../Components/CurrentUserRole/CurrentUserRole";
+import { FaCalendarAlt, FaUserCheck, FaPlus, FaMedapps, FaSearchPlus, FaSignInAlt, FaStripe } from "react-icons/fa";
 import './Dashboard.css'
 
 
@@ -26,18 +27,18 @@ const Dashboard = () => {
                         {
                             role === 'admin' ?
                                 <>
-                                    <li><NavLink to='/dashboard/manageAllClasses'>Manage classes</NavLink></li>
-                                    <li><NavLink to='/dashboard/userManage'>Manage Users</NavLink></li>
+                                    <li><NavLink to='/dashboard/manageAllClasses'> <FaCalendarAlt></FaCalendarAlt> Manage classes</NavLink></li>
+                                    <li><NavLink to='/dashboard/userManage'><FaUserCheck></FaUserCheck> Manage Users</NavLink></li>
                                 </> :
                                 role === 'instructor' ?
                                     <>
-                                        <li><NavLink to='/dashboard/addClass'>Add a class</NavLink></li>
-                                        <li><NavLink to='/dashboard/myClasses'>My Classes</NavLink></li>
+                                        <li><NavLink to='/dashboard/addClass'> <FaPlus></FaPlus> Add a class</NavLink></li>
+                                        <li><NavLink to='/dashboard/myClasses'><FaMedapps></FaMedapps> My Classes</NavLink></li>
                                     </> :
                                     <>
-                                        <li><NavLink to='/dashboard/selectedClass'>My Selected Classes</NavLink></li>
-                                        <li><NavLink to='/dashboard/enrolledClass'>My Enrolled Classes</NavLink></li>
-                                        <li><NavLink to='/dashboard/paymentHistory'>Payment History</NavLink></li>
+                                        <li><NavLink to='/dashboard/selectedClass'><FaSearchPlus></FaSearchPlus> My Selected Classes</NavLink></li>
+                                        <li><NavLink to='/dashboard/enrolledClass'><FaSignInAlt></FaSignInAlt> My Enrolled Classes</NavLink></li>
+                                        <li><NavLink to='/dashboard/paymentHistory'><FaStripe></FaStripe> Payment History</NavLink></li>
                                     </>
                         }
                     </ul>

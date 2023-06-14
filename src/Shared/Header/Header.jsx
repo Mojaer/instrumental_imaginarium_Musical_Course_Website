@@ -60,7 +60,7 @@ const Header = () => {
             </div>
             <div className="navbar-end" title={user?.displayName}>
                 <div >
-                    <button className="mr-3" onClick={handleTheme}><BsFillMoonFill></BsFillMoonFill></button>
+                    <button className="mr-3 bg-slate-800" onClick={handleTheme}><BsFillMoonFill></BsFillMoonFill></button>
                 </div>
 
                 {user ?
