@@ -70,7 +70,7 @@ const StudentsPerformance = () => {
     return (
         <section  >
             <h1 className="text-3xl font-semibold my-10 uppercase text-center">Performance Of our students </h1>
-            <div className=' lg:flex justify-around my-6' onMouseOver={handleAnime1}>
+            <div className=' lg:flex justify-around my-6 p-4' onMouseOver={handleAnime1}>
                 <div className='md:flex w-full' ref={elementref1}>
                     <img className='w-80 h-44 rounded-md' src={perf1} alt="" />
                     <img className='w-80 h-44 rounded-md m-6' src={perf4} alt="" />
@@ -81,7 +81,7 @@ const StudentsPerformance = () => {
                     <p className="text-lg font-semibold my-10 uppercase text-center">Chhayanaut Cultural Center </p>
                 </div>
             </div>
-            <div className=' lg:flex justify-around my-6'  >
+            <div className=' lg:flex justify-around my-6 p-4'  >
                 <div className='md:flex w-full' ref={elementref3}>
                     <img className='w-80 h-44 rounded-md' src={perf2} alt="" />
                     <img className='w-80 h-44 rounded-md m-6' src={perf5} alt="" />
@@ -92,7 +92,7 @@ const StudentsPerformance = () => {
                     <p className="text-lg font-semibold my-10 uppercase text-center">BMA Auditorium </p>
                 </div>
             </div>
-            <div className=' lg:flex justify-around my-6' onMouseOver={handleAnime2} >
+            <div className=' lg:flex justify-around my-6 p-4' onMouseOver={handleAnime2} >
                 <div className='md:flex w-full' ref={elementref3}>
                     <img className='w-80 h-44 rounded-md' src={perf3} alt="" />
                     <img className='w-80 h-44 rounded-md m-6' src={perf6} alt="" />
