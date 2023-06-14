@@ -20,7 +20,12 @@ const StudentsPerformance = () => {
     const elementref3 = useRef(null)
     const elementref4 = useRef(null)
 
+
     const handleAnime1 = () => {
+
+        if (window.innerWidth < 670) {
+            return
+        }
         const element1 = elementref1.current
         const element2 = elementref2.current
 
@@ -40,6 +45,9 @@ const StudentsPerformance = () => {
 
 
     const handleAnime2 = () => {
+        if (window.innerWidth < 670) {
+            return
+        }
 
         const element3 = elementref3.current
         const element4 = elementref4.current

@@ -8,7 +8,7 @@ const Footer = () => {
     const { theme } = useContext(themeContext)
     return (
         <footer className={`bg-gray-100 py-4 rounded-md p-6 ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
-            <div className="container mx-auto flex items-center justify-between">
+            <div className="container mx-auto md:flex items-center justify-between">
                 <div className="ms-4 text-center">
                     <img src={logo} alt="Company Logo" className="w-24 h-8 mx-auto" />
                     <p className="text-slate-800 ">instrumental-imaginarium</p>
@@ -24,7 +24,7 @@ const Footer = () => {
                         <FaLinkedin className="text-blue-900 text-3xl" />
                     </a>
                 </div>
-                <div className="text-left">
+                <div className="text-center md:text-left">
                     <p className="text-slate-800">Contact us:</p>
                     <p className="text-slate-800">123 Street, Dhaka,Bangladesh</p>
                     <p className="text-slate-800">Phone: 123-456-7890</p>
