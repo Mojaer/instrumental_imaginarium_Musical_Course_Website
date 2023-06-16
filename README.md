@@ -2,6 +2,7 @@
 b712-summer-camp-client-side-Mojaer created by GitHub Classroom
 * the deployed link of the website is https://instrumental-imaginarium.web.app/
 * The live site link of the server is https://instrumental-imaginarium-server.vercel.app/
+* The server side code link of the website is https://github.com/Mojaer/instrumental_imaginarium_Server_side
 * The name of the website is instrumental-imaginarium
 features:
 * this is a website for summer musical instrumental training
