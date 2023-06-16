@@ -1,4 +1,4 @@
-# b712-summer-camp-client-side-Mojaer
+#instrumental_imaginarium-client-side-Mojaer
 b712-summer-camp-client-side-Mojaer created by GitHub Classroom
 * the deployed link of the website is https://instrumental-imaginarium.web.app/
 * The live site link of the server is https://instrumental-imaginarium-server.vercel.app/
