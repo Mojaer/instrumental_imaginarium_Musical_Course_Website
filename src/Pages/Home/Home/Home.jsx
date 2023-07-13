@@ -4,6 +4,7 @@ import PopularClasses from "./PopularClasses/PopularClasses";
 import StudentsPerformance from "./StudentsPerformace/StudentsPerformace";
 import TopInstructors from "./TopInstructors/TopInstructors";
 import { themeContext } from "../../../Authentication/darkThemeProvider/ThemeProvider";
+import Reviews from "./Reviews/Reviews";
 
 
 
@@ -14,6 +15,7 @@ const Home = () => {
             <Banner></Banner>
             <PopularClasses></PopularClasses>
             <TopInstructors></TopInstructors>
+            <Reviews></Reviews>
             <StudentsPerformance></StudentsPerformance>
         </div>
     );
