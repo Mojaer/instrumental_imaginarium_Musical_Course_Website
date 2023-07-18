@@ -1,0 +1,12 @@
+.discount {
+    background-image: url('../../../../assets/bg-discount.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.studio {
+    background-image: url('../../../../assets/studio.jpeg');
+    background-repeat: none;
+    background-position: center;
+}

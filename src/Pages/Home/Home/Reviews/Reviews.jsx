@@ -49,7 +49,7 @@ const Reviews = () => {
                         <img className='w-48 h-48 rounded-full mx-auto mb-7' src={img2} alt="image" />
                         <div className='md:w-4/5 text-center mx-auto'>
                             <h1 className='text-xl my-3 font-semibold'> Maximilian Winchester IV</h1>
-                            <p>Imaginary Imporium exceeded my expectations. The faculty is composed of highly skilled musicians who genuinely care about their students' progress. The learning environment is inspiring and the facilities are top-notch. A remarkable institution.</p>
+                            <p>Imaginary Imporium exceeded my expectations. The faculty is composed of highly skilled musicians who genuinely care about their students progress. The learning environment is inspiring and the facilities are top-notch. A remarkable institution.</p>
                             <div className='text-xl my-3'>
                                 <Rating
                                     placeholderRating={4}
@@ -85,7 +85,7 @@ const Reviews = () => {
                         <img className='w-48 h-48 rounded-full mx-auto mb-7' src={img4} alt="image" />
                         <div className='md:w-4/5 text-center mx-auto'>
                             <h1 className='text-xl my-3 font-semibold'>Theodore von Steinberg</h1>
-                            <p>Imaginary Imporium provides an exceptional musical education. The faculty's expertise and personalized approach bring out the best in every student. The performances and recitals showcase the institution's commitment to excellence.</p>
+                            <p>Imaginary Imporium provides an exceptional musical education. The facultys expertise and personalized approach bring out the best in every student. The performances and recitals showcase the institutions commitment to excellence.</p>
                             <div className='text-xl my-3'>
                                 <Rating
                                     placeholderRating={4.5}

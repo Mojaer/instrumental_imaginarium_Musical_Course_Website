@@ -92,7 +92,7 @@ const StudentsPerformance = () => {
                     <p className="text-lg font-semibold my-10 uppercase text-center">BMA Auditorium </p>
                 </div>
             </div>
-            <div className=' lg:flex justify-around my-6 p-4' onMouseOver={handleAnime2} >
+            <div className=' lg:flex justify-around my-6 p-4 hidden ' onMouseOver={handleAnime2} >
                 <div className='md:flex w-full' ref={elementref3}>
                     <img className='w-80 h-44 rounded-md' src={perf3} alt="" />
                     <img className='w-80 h-44 rounded-md m-6' src={perf6} alt="" />

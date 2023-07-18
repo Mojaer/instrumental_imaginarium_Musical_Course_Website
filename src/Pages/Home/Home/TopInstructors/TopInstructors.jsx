@@ -22,16 +22,17 @@ const TopInstructors = () => {
     return (
         <section className={theme === 'dark' ? 'dark-theme' : 'light-theme'}>
             <h1 className="text-3xl font-semibold my-10 uppercase text-center">Instructors </h1>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 w-full mx-auto">
                 {
-                    topInstructors.map((instructor) => <div key={instructor._id} className="card card-side bg-base-100 shadow-xl">
-                        <figure><img className="h-full w-26" src={instructor.imgUrl} alt="Movie" /></figure>
-                        <div className="card-body">
+                    topInstructors.map((instructor) =>
+                        <div key={instructor._id} className="card md:card-side w-full text-light bg-base-100 shadow-xl">
+                            <figure><img className="h-full w-26" src={instructor.imgUrl} alt="Movie" /></figure>
+                            <div className="p-3 pt-5 w-full">
 
-                            <h2 className="card-title"> {instructor.name}</h2>
-                            <p>Email:{instructor.email}</p>
+                                <h2 className="card-title"> {instructor.name}</h2>
+                                <p>Email:{instructor.email}</p>
+                            </div>
                         </div>
-                    </div>
                     )
                 }
             </div>

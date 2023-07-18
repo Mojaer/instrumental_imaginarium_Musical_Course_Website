@@ -14,9 +14,9 @@ const PopularClasses = () => {
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
                 {
                     slicedClass.map(Class =>
-                        <div key={Class._id} className="card w-80 bg-slate-100 shadow-xl image-full">
+                        <div key={Class._id} className="card mx-auto w-full md:w-80 bg-slate-100 shadow-xl image-full">
                             <figure><img className="h-20" src={Class.ClassImage} alt="Shoes" /></figure>
-                            <div className="card-body z-5">
+                            <div className="md:card-body w-full z-5 ">
                                 <h2 ><strong>Course: </strong> {Class.ClassName}</h2>
                                 <h2 ><strong>Students: </strong> {Class.seatBooked}</h2>
                             </div>
